@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+{% set active_page = "about" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb">
+        <a href="{{ url_for('index') }}">DAWE Vocabularies System</a>
+    </li>
+    <span style="margin: 0 0.7em;">/</span>
+    <li class="breadcrumb">
+        About
+    </li>
+{% endblock %}
+
+{% block content %}
+    <p><em>This content is the same as the README page from <a href="https://github.com/RDFlib/VocPrez">this system's code repository</a>.</em></p>
+    {{ content }}
+{% endblock %}

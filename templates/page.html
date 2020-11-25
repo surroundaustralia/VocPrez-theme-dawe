@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DAWE Vocabularies</title>
+    <link href="../style/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://kit.fontawesome.com/c112c4b9c0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{% set active_page = active_page -%}
+    <div class="container">
+        <div id="vocprez">
+            made by <a href="http://github.com/rdflib/VocPrez">VocPrez</a>&nbsp;
+            <a id="versionlink" href="https://github.com/RDFLib/VocPrez/releases/tag/{{ utils.version() }}">{{ utils.version() }}</a>
+        </div>
+        <header role="banner">
+            <div class="banner">
+                <div class="banner-content">
+                    <div class="banner-top">
+                        <div class="logo-wrapper">
+                            <a href="https://www.awe.gov.au/">
+                                <img src="../style/logo.svg" alt="logo" class="logo">
+                            </a>
+                        </div>
+                        <div class="top-menu">
+                            <nav role="navigation" class="top-nav">
+                                <ul>
+                                    <li class="top-menu-item">
+                                        <a href="https://www.awe.gov.au/about/who-we-are/portfolio">Our portfolio</a>
+                                    </li>
+                                    <span style="margin: 0 0.7em;">|</span>
+                                    <li class="top-menu-item">
+                                        <a href="https://www.awe.gov.au/about/jobs">Jobs</a>
+                                    </li>
+                                    <span style="margin: 0 0.7em;">|</span>
+                                    <li class="top-menu-item">
+                                        <a href="https://www.awe.gov.au/about/contact">Contact us</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="search-bar">
+                                <input type="text" name="search" id="search" placeholder="Search...">
+                                <button role="search" id="search-button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-bottom1">
+                        <nav role="navigation" class="main-nav">
+                            <ul>
+                                <li class="main-menu-item">
+                                    <a href="https://www.awe.gov.au/about">About</a>
+                                </li>
+                                <li class="main-menu-item">
+                                    <a href="https://minister.awe.gov.au/">Ministers</a>
+                                </li>
+                                <li class="main-menu-item">
+                                    <a href="https://www.awe.gov.au/news">News and media</a>
+                                </li>
+                                <li class="main-menu-item last-item">
+                                    <a href="https://www.awe.gov.au/online-services">Online services</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-content">
+                <nav class="breadcrumb-nav" role="navigation">
+                    <ol>
+                        <li class="breadcrumb">
+                            <a href="https://www.awe.gov.au/">Home</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">/</span>
+                        {% block breadcrumbs %}{% endblock %}
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <main role="main">
+            <div class="main-content-wrapper">
+                <div class="main-content">
+                    <nav class="side-nav" role="navigation">
+                        <div class="sidenav-section-title">
+                            <a href="{{ url_for('index') }}"><span style="font-size: 10px; margin-right: 6px;"><i class="fas fa-reply"></i></span> System Home</a>
+                        </div>
+                        <ul>
+                            <li class="sidenav-item{% if active_page == 'vocab' %} active{% endif %}">
+                                <a href="{{ url_for('vocabularies') }}">DAWE Vocabularies</a>
+                            </li>
+                            <li class="sidenav-item{% if active_page == 'search' %} active{% endif %}">
+                                <a href="{{ url_for('search') }}">Search</a>
+                            </li>
+                            <li class="sidenav-item{% if active_page == 'sparql' %} active{% endif %}">
+                                <a href="{{ url_for('sparql') }}">SPARQL</a>
+                            </li>
+                            <li class="sidenav-item{% if active_page == 'about' %} active{% endif %}">
+                                <a href="{{ url_for('about') }}">About the System</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="content">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <nav class="footer-nav" role="navigation">
+                    <ul>
+                        <li class="footer-nav-item">
+                            <a href="https://www.awe.gov.au/about/contact">Contact us</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://www.awe.gov.au/about/commitment/accessibility">Accessibility</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://www.awe.gov.au/disclaimer">Disclaimer</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://www.awe.gov.au/about/commitment/privacy">Privacy</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://www.awe.gov.au/site-map">Sitemap</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://www.agriculture.gov.au/">agriculture.gov.au</a>
+                        </li>
+                        <span style="margin: 0 0.7em;">|</span>
+                        <li class="footer-nav-item">
+                            <a href="https://environment.gov.au/">environment.gov.au</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="last-modified">
+                    <span class="label">Last modified:</span> 24 August 2020
+                </div>
+                <div class="footer-text">
+                    <p>
+                        © Department of Agriculture, Water and the Environment
+                    </p>
+                    <p class="acknowledgement">
+                        We acknowledge the Traditional Owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
