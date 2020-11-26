@@ -1,4 +1,4 @@
-eval $(cat .env | tr -d '\r')
+eval $(cat vm.env | tr -d '\r')
 echo "Styles"
 echo "copying $VP_THEME_HOME/style content to $VP_HOME/vocprez/view/style"
 cp $VP_THEME_HOME/style/* $VP_HOME/vocprez/view/style

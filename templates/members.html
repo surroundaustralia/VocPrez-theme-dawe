@@ -56,12 +56,14 @@
           <div id="filter">
             <h4>Filter</h4>
             <form method="get" action="{{ url_for('vocabularies') }}">
-              <input type="text" name="filter" value="{{ request.values.get('filter') if request.values.get('filter') }}" />
-              <button>Filter</button>
-              <span class="tooltip" style="font-weight:bold;">?<span class="tooltiptext">A simple text matching filter of the list content to the left</span></span>
+              <div class="filter-form-wrapper">
+                  <input id="filter-input" type="text" name="filter" value="{{ request.values.get('filter') if request.values.get('filter') }}" placeholder="Filter..." />
+                  <button id="filter-button">Filter</button>
+                  <span class="tooltip" style="font-weight:bold;">?<span class="tooltiptext">A simple text matching filter of the list content to the left</span></span>
+              </div>
             </form>
             <form method="get" action="{{ url_for('vocabularies') }}">
-              <button>Clear</button>
+              <button id="clear-button">Clear</button>
             </form>
           </div>
         </div>

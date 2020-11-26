@@ -28,25 +28,33 @@
 {% block content %}
   <h1>Search</h1>
   <p>This page is for searching for Concepts within vocabularies.</p>
-  <form action="{{ url_for("search") }}" method="get" style="">
-    {% if last_search is not none %}
-      <input type="text" id="search" name="search" value="{{ last_search }}" style="grid-column: 1;" />
-    {% else %}
-      <input type="text" id="search" name="search" style="grid-column: 1;" />
-    {% endif %}
-    <label for="voc" style="grid-column: 2;">Your search term</label>
-    <select id="from" name="from" style="grid-column: 1;">
-      <option value="all"><em>all</em></option>
-      {% for v in vocabs %}
-        {% if v[0] == selected_vocab %}
-          <option value="{{ v[0] }}" selected>{{ v[1] }}</option>
+  <form action="{{ url_for('search') }}" method="get" style="">
+    <div class="form-wrapper">
+      <div class="form-group">
+        {% if last_search is not none %}
+          <input type="text" id="search" name="search" placeholder="Search..." value="{{ last_search }}" />
         {% else %}
-          <option value="{{ v[0] }}">{{ v[1] }}</option>
+          <input type="text" id="search" name="search" placeholder="Search..."/>
         {% endif %}
-      {% endfor %}
-    </select>
-    <label for="voc" style="grid-column: 2;">Select a vocab to limit your search, or choose 'all'</label>
-    <input type="submit" value="Search" style="grid-column: 1;" />
+        <label for="search" class="form-group-label">Your search term</label>
+      </div>
+      <div class="form-group">
+        <select id="from" name="from">
+          <option value="all"><em>all</em></option>
+          {% for v in vocabs %}
+            {% if v[0] == selected_vocab %}
+              <option value="{{ v[0] }}" selected>{{ v[1] }}</option>
+            {% else %}
+              <option value="{{ v[0] }}">{{ v[1] }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        <label for="from" class="form-group-label">Select a vocab to limit your search, or choose 'all'</label>
+      </div>
+      <div class="form-group">
+        <input id="submit-button" type="submit" value="Search" />
+      </div>
+    </div>
   </form>
   {% if results|length > 0 %}
     {% if selected_vocab == "all" %}
