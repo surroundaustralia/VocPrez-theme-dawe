@@ -21,7 +21,7 @@
               <h4>Alternates Profiles</h4>
               <p>Different views of and formats:</p>
               <p>
-                <a href="{{ url_for('vocabularies') }}?_profile=alt">Alternate Profiles</a>
+                <a href="{{ utils.get_content_uri(uri, url_for('vocabularies')) }}?_profile=alt">Alternate Profiles</a>
                 <span class="tooltip" style="font-weight:bold;">?<span class="tooltiptext">Different Media Types (HTML, text, RDF, JSON etc.) and different information model views, <em>profiles</em>, are available for this resource.</span></span>
               </p>
             </div>
@@ -48,7 +48,7 @@
             <h3>Members</h3>
             <ul>
             {%- for member in members -%}
-            <li><a href="{{ member[0] }}">{{ member[1] }}</a></li>
+            <li><a href="{{ utils.get_content_uri(member[0]) }}">{{ member[1] }}</a></li>
             {%- endfor -%}
             </ul>
         </div>
@@ -56,14 +56,12 @@
           <div id="filter">
             <h4>Filter</h4>
             <form method="get" action="{{ url_for('vocabularies') }}">
-              <div class="filter-form-wrapper">
-                  <input id="filter-input" type="text" name="filter" value="{{ request.values.get('filter') if request.values.get('filter') }}" placeholder="Filter..." />
-                  <button id="filter-button">Filter</button>
-                  <span class="tooltip" style="font-weight:bold;">?<span class="tooltiptext">A simple text matching filter of the list content to the left</span></span>
-              </div>
+              <input type="text" name="filter" value="{{ request.values.get('filter') if request.values.get('filter') }}" />
+              <button>Filter</button>
+              <span class="tooltip" style="font-weight:bold;">?<span class="tooltiptext">A simple text matching filter of the list content to the left</span></span>
             </form>
             <form method="get" action="{{ url_for('vocabularies') }}">
-              <button id="clear-button">Clear</button>
+              <button>Clear</button>
             </form>
           </div>
         </div>

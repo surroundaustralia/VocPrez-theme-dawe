@@ -61,7 +61,7 @@
         {% endif -%}
         {%  if vocab.concept_hierarchy is not none and vocab.concept_hierarchy|length > 0  -%}
         <tr>
-          <th><a href="http://www.w3.org/2004/02/skos/core#hasTopConcept">Concept Hierarchy</a>:</th>
+          <th class="concept-hierarchy-th"><a href="http://www.w3.org/2004/02/skos/core#hasTopConcept">Concept Hierarchy</a>:</th>
           <td>
               {{ render_concept_hierarchy(vocab.concept_hierarchy)|safe }}
           </td>
@@ -104,11 +104,17 @@
 </div>
 <div class="search">
   <h3>Search</h3>
-  <form action="{{ url_for("search") }}" method="get" style="">
-    <input type="text" id="search" name="search" style="grid-column: 1;" />
-    <input type="hidden" id="from" name="from" value="{{ uri }}" />
-    <label for="voc" style="grid-column: 2;">Your search term</label><br />
-    <input type="submit" value="Search" style="grid-column: 1;" />
+  <form action="{{ url_for('search') }}" method="get">
+    <div class="form-wrapper">
+        <div class="form-group">
+            <input type="text" id="search" name="search" placeholder="Search..." />
+            <input type="hidden" id="from" name="from" value="{{ uri }}" />
+            <label class="form-group-label" for="search">Your search term</label><br />
+        </div>
+        <div class="form-group">
+            <input id="vocab-search-button" type="submit" value="Search" />
+        </div>
+    </div>
   </form>
 </div>
 <div class="altprof">
