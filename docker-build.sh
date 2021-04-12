@@ -13,12 +13,13 @@ echo "set the VocPrez config"
 sed 's#$SPARQL_ENDPOINT#'"$SPARQL_ENDPOINT"'#' $VP_THEME_HOME/config.py > $VP_THEME_HOME/config_updated.py
 sed -i 's#$SPARQL_USERNAME#'"$SPARQL_USERNAME"'#' $VP_THEME_HOME/config_updated.py
 sed -i 's#$SPARQL_PASSWORD#'"$SPARQL_PASSWORD"'#' $VP_THEME_HOME/config_updated.py
+sed -i 's#$SYSTEM_BASE_URI#'"$SYSTEM_BASE_URI"'#' $VP_THEME_HOME/config_updated.py
 mv $VP_THEME_HOME/config_updated.py $VP_HOME/deploy/_config/__init__.py
 
 echo "run Dockerfile there"
 docker build -t vocprez-dawe -f $VP_HOME/Dockerfile $VP_HOME
 
 echo "clean-up"
-rm -r $VP_HOME/deploy
+# rm -r $VP_HOME/deploy
 
 echo "complete"
