@@ -481,3 +481,37 @@ footer {
     text-align: left;
     vertical-align: baseline;
 }
+
+.altprof {
+    float: right;
+    width: 350px;
+}
+
+.altprof ul li {
+    list-style-type: none;
+}
+
+.filter {
+    float: right;
+    clear: right;
+    width: 350px;
+}
+
+.search {
+    float: right;
+    clear: right;
+    width: 350px;
+}
+
+table.alt tr:nth-child(odd) {
+    background-color: rgb(238, 238, 238);
+}
+table.alt {
+    border-collapse: collapse;
+}
+table.alt th,
+table.alt td {
+    vertical-align: top;
+    text-align: left;
+    padding: 5px;
+}
