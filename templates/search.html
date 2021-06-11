@@ -28,7 +28,7 @@
 {% block content %}
   <h1>Search</h1>
   <p>This page is for searching for Concepts within vocabularies.</p>
-  <form action="{{ url_for("search") }}" method="get" style="display:grid; column-gap:10px; row-gap:5px;">
+  <form action="{{ url_for('search') }}" method="get" style="display:grid; column-gap:10px; row-gap:5px;">
     <div style="grid-column: 1;">
       {% if last_search is not none %}
         <input type="text" id="search" name="search" value="{{ last_search }}" style="width:300px" />

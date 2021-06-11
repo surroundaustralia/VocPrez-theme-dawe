@@ -1,5 +1,4 @@
-# Mac
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+eval $(cat .env | tr -d '\r')
 
 echo "prepare a deployment folder"
 mkdir $VP_HOME/deploy
