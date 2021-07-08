@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dawe-vocprez-deployment
+  labels:
+    app: dawe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dawe
+  template:
+    metadata:
+      labels:
+        app: dawe
+    spec:
+      containers:
+      - name: dawe-vocprez
+        image: 680471986828.dkr.ecr.ap-southeast-2.amazonaws.com/dawe/vocprez:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dawe-vocprez-service
+spec:
+  selector:
+    app: dawe
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: dawe-vocprez-ingress
+spec:
+  rules:
+    - host: dawe.surroundaustralia.com
+      http:
+        paths:
+          - backend:
+              serviceName: dawe-vocprez-service
+              servicePort: 80
